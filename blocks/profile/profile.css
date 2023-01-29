@@ -1,0 +1,12 @@
+.profile {
+  color: #fff;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 1fr 150px;
+  align-items: center;
+  column-gap: 30px;
+  padding: 40px 0 0 0;
+  grid-template-areas:
+    "avatar username button"
+    "avatar status button";
+}

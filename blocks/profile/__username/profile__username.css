@@ -1,0 +1,12 @@
+.profile__username {
+  grid-area: username;
+  margin: 0;
+  font-weight: 500;
+  align-self: end;
+  align-items: baseline;
+  font-size: 42px;
+  line-height: 48px;
+  display: flex;
+  column-gap: 19px;
+  margin-bottom: -30px;
+}
