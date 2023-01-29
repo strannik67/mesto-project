@@ -1,0 +1,9 @@
+.photo__like {
+  border: none;
+  background-color: #fff;
+  background-image: url('../../../images/like.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 22px;
+  height: 19px;
+}
