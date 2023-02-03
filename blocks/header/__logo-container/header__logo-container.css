@@ -1,0 +1,10 @@
+.header__logo-container {
+  border-bottom: 1px solid #E5E5E5;
+  padding: 45px 0 41px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__logo-container {
+    padding: 28px 27px 31px;
+  }
+}
