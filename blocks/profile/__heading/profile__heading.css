@@ -3,10 +3,12 @@
   align-items: baseline;
   max-width: 350px;
   position: relative;
+  column-gap: 19px;
 }
 
 @media screen and (max-width: 1279px) {
   .profile__heading {
     max-width: 230px;
+    column-gap: 10px;
   }
 }

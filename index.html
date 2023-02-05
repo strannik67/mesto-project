@@ -17,13 +17,16 @@
   <main class="content">
 
     <section class="popup">
-      <form class="popup__container" action="">
-        <h2 class="popup__heading" >Редактировать профиль</h2>
-        <input class="popup__input" type="text" value="Жак-Ив Кусто">
-        <input class="popup__input" type="text" value="Исследователь океана">
-        <button class="popup__save-button button" type="submit">Сохранить</button>
-        <button class="popup__close-button button"></button>
-      </form>
+      <div class="popup__container">
+        <form class="popup__form" action="">
+          <h2 class="popup__heading" >Редактировать профиль</h2>
+          <input class="popup__input" type="text" value="Жак-Ив Кусто">
+          <input class="popup__input" type="text" value="Исследователь океана">
+          <button class="popup__save-button" type="submit">Сохранить</button>
+          <button class="popup__close-button button"></button>
+        </form>
+      </div>
+
     </section>
 
     <section class="profile">
@@ -37,68 +40,52 @@
       </div>
       <button class="profile__add-button button"></button>
     </section>
+
     <section class="photos">
-      <figure class="photo">
-        <img class="photo__image" src="./images/karachaevo.jpg" alt="Карачаево">
-        <figcaption class="photo__caption">
-          <p class="photo__title">Карачаевск</p>
-          <label class="checkbox">
-            <input class="checkbox__input" type="checkbox">
-            <span class="checkbox__pseudo"></span>
-          </label>
-        </figcaption>
-      </figure>
-      <figure class="photo">
+      <article class="photo">
+        <img class="photo__image" src="./images/test.jpg" alt="Карачаево">
+        <div class="photo__caption">
+          <h2 class="photo__title">Карачаевск</h2>
+          <button class="photo__like-button button photo__like-button_checked"></button>
+        </div>
+      </article>
+      <article class="photo">
         <img class="photo__image" src="./images/elbrus.jpg" alt="Эльбрус">
-        <figcaption class="photo__caption">
-          <p class="photo__title">Гора Эльбрус</p>
-          <label class="checkbox">
-            <input class="checkbox__input" type="checkbox">
-            <span class="checkbox__pseudo"></span>
-          </label>
-        </figcaption>
-      </figure>
-      <figure class="photo">
+        <div class="photo__caption">
+          <h2 class="photo__title">Гора Эльбрус</h2>
+          <button class="photo__like-button button"></button>
+        </div>
+      </article>
+      <article class="photo">
         <img class="photo__image" src="./images/dombai.jpg" alt="Домбай">
-        <figcaption class="photo__caption">
-          <p class="photo__title">Домбай</p>
-          <label class="checkbox">
-            <input class="checkbox__input" type="checkbox">
-            <span class="checkbox__pseudo"></span>
-          </label>
-        </figcaption>
-      </figure>
-      <figure class="photo">
+        <div class="photo__caption">
+          <h2 class="photo__title">Домбай</h2>
+          <button class="photo__like-button button"></button>
+        </div>
+      </article>
+      <article class="photo">
         <img class="photo__image" src="./images/elbrus.jpg" alt="Эльбрус">
-        <figcaption class="photo__caption">
-          <p class="photo__title">Гора Эльбрус</p>
-          <label class="checkbox">
-            <input class="checkbox__input" type="checkbox">
-            <span class="checkbox__pseudo"></span>
-          </label>
-        </figcaption>
-      </figure>
-      <figure class="photo">
+        <div class="photo__caption">
+          <h2 class="photo__title">Гора Эльбрус</h2>
+          <button class="photo__like-button button"></button>
+        </div>
+      </article>
+      <article class="photo">
         <img class="photo__image" src="./images/dombai.jpg" alt="Домбай">
-        <figcaption class="photo__caption">
-          <p class="photo__title">Домбай</p>
-          <label class="checkbox">
-            <input class="checkbox__input" type="checkbox">
-            <span class="checkbox__pseudo"></span>
-          </label>
-        </figcaption>
-      </figure>
-      <figure class="photo">
+        <div class="photo__caption">
+          <h2 class="photo__title">Домбай</h2>
+          <button class="photo__like-button button"></button>
+        </div>
+      </article>
+      <article class="photo">
         <img class="photo__image" src="./images/karachaevo.jpg" alt="Карачаево">
-        <figcaption class="photo__caption">
-          <p class="photo__title">Карачаево-Черкесия</p>
-          <label class="checkbox">
-            <input class="checkbox__input" type="checkbox">
-            <span class="checkbox__pseudo"></span>
-          </label>
-        </figcaption>
-      </figure>
+        <div class="photo__caption">
+          <h2 class="photo__title">Карачаево-Черкесия</h2>
+          <button class="photo__like-button button"></button>
+        </div>
+      </article>
     </section>
+
   </main>
 
   <footer class="footer">
