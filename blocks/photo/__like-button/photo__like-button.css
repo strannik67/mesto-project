@@ -1,0 +1,9 @@
+.photo__like-button {
+  width: 22px;
+  height: 19px;
+  background-image: url('../../../images/like.svg');
+}
+
+.photo__like-button:hover {
+  background-color: black;
+}

@@ -1,6 +1,6 @@
 .header__logo-container {
-  border-bottom: 1px solid #E5E5E5;
-  padding: 45px 0 41px;
+  border-bottom: 1px solid #545454;
+  padding: 45px 0 40px;
 }
 
 @media screen and (max-width: 1279px) {

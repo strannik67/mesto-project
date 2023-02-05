@@ -13,12 +13,94 @@
       <img class="header__logo" src="./images/logo.svg" alt="Логотип">
     </div>
   </header>
-  <section>
-    PROFILE
-  </section>
-  <section>
-    PHOTOS
-  </section>
+
+  <main class="content">
+
+    <section class="popup">
+      <form class="popup__container" action="">
+        <h2 class="popup__heading" >Редактировать профиль</h2>
+        <input class="popup__input" type="text" value="Жак-Ив Кусто">
+        <input class="popup__input" type="text" value="Исследователь океана">
+        <button class="popup__save-button button" type="submit">Сохранить</button>
+        <button class="popup__close-button button"></button>
+      </form>
+    </section>
+
+    <section class="profile">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+      <div class="profile__info">
+        <div class="profile__heading">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button button"></button>
+        </div>
+        <p class="profile__status">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button button"></button>
+    </section>
+    <section class="photos">
+      <figure class="photo">
+        <img class="photo__image" src="./images/karachaevo.jpg" alt="Карачаево">
+        <figcaption class="photo__caption">
+          <p class="photo__title">Карачаевск</p>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox">
+            <span class="checkbox__pseudo"></span>
+          </label>
+        </figcaption>
+      </figure>
+      <figure class="photo">
+        <img class="photo__image" src="./images/elbrus.jpg" alt="Эльбрус">
+        <figcaption class="photo__caption">
+          <p class="photo__title">Гора Эльбрус</p>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox">
+            <span class="checkbox__pseudo"></span>
+          </label>
+        </figcaption>
+      </figure>
+      <figure class="photo">
+        <img class="photo__image" src="./images/dombai.jpg" alt="Домбай">
+        <figcaption class="photo__caption">
+          <p class="photo__title">Домбай</p>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox">
+            <span class="checkbox__pseudo"></span>
+          </label>
+        </figcaption>
+      </figure>
+      <figure class="photo">
+        <img class="photo__image" src="./images/elbrus.jpg" alt="Эльбрус">
+        <figcaption class="photo__caption">
+          <p class="photo__title">Гора Эльбрус</p>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox">
+            <span class="checkbox__pseudo"></span>
+          </label>
+        </figcaption>
+      </figure>
+      <figure class="photo">
+        <img class="photo__image" src="./images/dombai.jpg" alt="Домбай">
+        <figcaption class="photo__caption">
+          <p class="photo__title">Домбай</p>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox">
+            <span class="checkbox__pseudo"></span>
+          </label>
+        </figcaption>
+      </figure>
+      <figure class="photo">
+        <img class="photo__image" src="./images/karachaevo.jpg" alt="Карачаево">
+        <figcaption class="photo__caption">
+          <p class="photo__title">Карачаево-Черкесия</p>
+          <label class="checkbox">
+            <input class="checkbox__input" type="checkbox">
+            <span class="checkbox__pseudo"></span>
+          </label>
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
