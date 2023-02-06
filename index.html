@@ -16,14 +16,14 @@
 
   <main class="content">
 
-    <section class="popup">
+    <section class="popup popup_opened">
       <div class="popup__container">
-        <form class="popup__form" action="">
+        <form class="popup__form" name="profile">
           <h2 class="popup__heading" >Редактировать профиль</h2>
           <input class="popup__input" type="text" value="Жак-Ив Кусто">
           <input class="popup__input" type="text" value="Исследователь океана">
           <button class="popup__save-button" type="submit">Сохранить</button>
-          <button class="popup__close-button button"></button>
+          <button class="popup__close-button button" type="button"></button>
         </form>
       </div>
 
@@ -34,57 +34,57 @@
       <div class="profile__info">
         <div class="profile__heading">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button button"></button>
+          <button class="profile__edit-button button" type="button"></button>
         </div>
         <p class="profile__status">Исследователь океана</p>
       </div>
-      <button class="profile__add-button button"></button>
+      <button class="profile__add-button button" type="button"></button>
     </section>
 
-    <section class="photos">
+    <div class="photos">
       <article class="photo">
         <img class="photo__image" src="./images/test.jpg" alt="Карачаево">
         <div class="photo__caption">
           <h2 class="photo__title">Карачаевск</h2>
-          <button class="photo__like-button button photo__like-button_checked"></button>
+          <button class="photo__like-button button photo__like-button_checked" type="button"></button>
         </div>
       </article>
       <article class="photo">
         <img class="photo__image" src="./images/elbrus.jpg" alt="Эльбрус">
         <div class="photo__caption">
           <h2 class="photo__title">Гора Эльбрус</h2>
-          <button class="photo__like-button button"></button>
+          <button class="photo__like-button button" type="button"></button>
         </div>
       </article>
       <article class="photo">
         <img class="photo__image" src="./images/dombai.jpg" alt="Домбай">
         <div class="photo__caption">
           <h2 class="photo__title">Домбай</h2>
-          <button class="photo__like-button button"></button>
+          <button class="photo__like-button button" type="button"></button>
         </div>
       </article>
       <article class="photo">
         <img class="photo__image" src="./images/elbrus.jpg" alt="Эльбрус">
         <div class="photo__caption">
           <h2 class="photo__title">Гора Эльбрус</h2>
-          <button class="photo__like-button button"></button>
+          <button class="photo__like-button button" type="button"></button>
         </div>
       </article>
       <article class="photo">
         <img class="photo__image" src="./images/dombai.jpg" alt="Домбай">
         <div class="photo__caption">
           <h2 class="photo__title">Домбай</h2>
-          <button class="photo__like-button button"></button>
+          <button class="photo__like-button button" type="button"></button>
         </div>
       </article>
       <article class="photo">
         <img class="photo__image" src="./images/karachaevo.jpg" alt="Карачаево">
         <div class="photo__caption">
           <h2 class="photo__title">Карачаево-Черкесия</h2>
-          <button class="photo__like-button button"></button>
+          <button class="photo__like-button button" type="button"></button>
         </div>
       </article>
-    </section>
+    </div>
 
   </main>
 
