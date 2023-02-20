@@ -97,12 +97,18 @@ function addCard(title, link, prepend = false) {
   card.querySelector('.photo__title').textContent = title;
   card.querySelector('.photo__image').src = link;
   card.querySelector('.photo__image').alt = title;
+  card.querySelector('.photo__like-button').addEventListener('click', like);
 
   if(prepend) {
     photos.prepend(card);
   } else {
     photos.append(card);
   }
+}
+
+function like(evt) {
+  const button = evt.target;
+  button.classList.toggle('photo__like-button_checked');
 }
 
 const profileEditButton = document.querySelector('.profile__edit-button');
