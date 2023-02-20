@@ -97,7 +97,9 @@ function addCard(title, link, prepend = false) {
   card.querySelector('.photo__title').textContent = title;
   card.querySelector('.photo__image').src = link;
   card.querySelector('.photo__image').alt = title;
-  card.querySelector('.photo__like-button').addEventListener('click', like);
+  card.querySelector('.photo__like-button').addEventListener('click', likeCard);
+  card.querySelector('.photo__delete-button').addEventListener('click', deleteCard);
+
 
   if(prepend) {
     photos.prepend(card);
@@ -106,9 +108,14 @@ function addCard(title, link, prepend = false) {
   }
 }
 
-function like(evt) {
+function likeCard(evt) {
   const button = evt.target;
   button.classList.toggle('photo__like-button_checked');
+}
+
+function deleteCard(evt) {
+  const card = evt.target.parentNode;
+  card.remove();
 }
 
 const profileEditButton = document.querySelector('.profile__edit-button');
