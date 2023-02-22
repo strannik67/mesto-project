@@ -124,6 +124,6 @@ profileEditButton.addEventListener('click', showForm);
 const addPhotoButton = document.querySelector('.profile__add-button');
 addPhotoButton.addEventListener('click', showForm);
 
-for(let i = 0; i < initialCards.length; i++) {
-  addCard(initialCards[i]['name'], initialCards[i]['link']);
-}
+initialCards.forEach((card) => {
+  addCard(card['name'], card['link']);
+})
