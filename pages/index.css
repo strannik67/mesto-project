@@ -11,6 +11,10 @@
 @import url('../blocks/popup/__close-button/popup__close-button.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 
+@import url('../blocks/fullscreen-photo/fullscreen-photo.css');
+@import url('../blocks/fullscreen-photo/__image/fullscreen-photo__image.css');
+@import url('../blocks/fullscreen-photo/__title/fullscreen-photo__title.css');
+
 @import url('../blocks/page/page.css');
 @import url('../blocks/button/button.css');
 

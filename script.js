@@ -26,39 +26,58 @@ const initialCards = [
   }
 ]; 
 
-function showForm(evt) {
-  const popup = document.querySelector('.popup');
-  const popupContainer = popup.querySelector('.popup__container');
+function showEditProfileForm() {
   const formTemplate = templates.querySelector('.popup__form');
   const form = formTemplate.cloneNode(true);
 
-  switch (evt.target.name){
-    case 'profile-edit-button':
-      form.querySelector('.popup__heading').textContent = 'Редактировать профиль';
-      form.querySelectorAll('.popup__input')[0].name = 'name';
-      form.querySelectorAll('.popup__input')[0].value = document.querySelector('.profile__name').textContent;
-      form.querySelectorAll('.popup__input')[1].name = 'status';
-      form.querySelectorAll('.popup__input')[1].value = document.querySelector('.profile__status').textContent;
-    break;
-    case 'add-photo-button':
-      form.querySelector('.popup__heading').textContent = 'Новое место';
-      form.querySelectorAll('.popup__input')[0].name = 'title';
-      form.querySelectorAll('.popup__input')[1].name = 'link';
-    break;
-  }
-
-  form.querySelector('.popup__close-button').addEventListener('click', hideForm);
+  form.querySelector('.popup__heading').textContent = 'Редактировать профиль';
+  form.querySelectorAll('.popup__input')[0].name = 'name';
+  form.querySelectorAll('.popup__input')[0].value = document.querySelector('.profile__name').textContent;
+  form.querySelectorAll('.popup__input')[1].name = 'status';
+  form.querySelectorAll('.popup__input')[1].value = document.querySelector('.profile__status').textContent;
   form.querySelector('.popup__save-button').addEventListener('click', saveForm);
 
-  popupContainer.append(form);
+  showPopup(form);
+}
+
+function showImageAddForm() {
+  const formTemplate = templates.querySelector('.popup__form');
+  const form = formTemplate.cloneNode(true);
+
+  form.querySelector('.popup__heading').textContent = 'Новое место';
+  form.querySelectorAll('.popup__input')[0].name = 'title';
+  form.querySelectorAll('.popup__input')[1].name = 'link';
+  form.querySelector('.popup__save-button').addEventListener('click', saveForm);
+
+  showPopup(form);
+}
+
+function zoomImage(evt) {
+  const fullscreenPhotoTemplate = templates.querySelector('.fullscreen-photo');
+  const fullscreenPhoto = fullscreenPhotoTemplate.cloneNode(true);
+
+  fullscreenPhoto.querySelector('.fullscreen-photo__image').src = evt.target.src;
+  fullscreenPhoto.querySelector('.fullscreen-photo__image').alt = evt.target.alt;
+  fullscreenPhoto.querySelector('.fullscreen-photo__title').textContent = evt.target.parentNode.querySelector('.photo__title').textContent;
+
+  showPopup(fullscreenPhoto);
+}
+
+function showPopup(element) {
+  const popup = document.querySelector('.popup');
+  const popupContainer = popup.querySelector('.popup__container');
+
+  popupContainer.querySelector('.popup__close-button').addEventListener('click', hidePopup);
+
+  popupContainer.append(element);
   popup.classList.add('popup_opened');
 }
 
-function hideForm() {
+function hidePopup() {
   const popup = document.querySelector('.popup');
-  const form = popup.querySelector('.popup__form');
+  const popupContainer = popup.querySelector('.popup__container');
 
-  form.remove();
+  popupContainer.lastChild.remove();
   popup.classList.remove('popup_opened');
 }
 
@@ -79,7 +98,7 @@ function saveForm(evt) {
     break;
   }
 
-  hideForm();
+  hidePopup();
 }
 
 function editProfile(name, status) {
@@ -99,6 +118,7 @@ function addCard(title, link, prepend = false) {
   card.querySelector('.photo__image').alt = title;
   card.querySelector('.photo__like-button').addEventListener('click', likeCard);
   card.querySelector('.photo__delete-button').addEventListener('click', deleteCard);
+  card.querySelector('.photo__image').addEventListener('click', zoomImage);
 
 
   if(prepend) {
@@ -119,10 +139,10 @@ function deleteCard(evt) {
 }
 
 const profileEditButton = document.querySelector('.profile__edit-button');
-profileEditButton.addEventListener('click', showForm);
+profileEditButton.addEventListener('click', showEditProfileForm);
 
 const addPhotoButton = document.querySelector('.profile__add-button');
-addPhotoButton.addEventListener('click', showForm);
+addPhotoButton.addEventListener('click', showImageAddForm);
 
 initialCards.forEach((card) => {
   addCard(card['name'], card['link']);
