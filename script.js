@@ -1,4 +1,11 @@
 const templates = document.querySelector('#templates').content;
+const popup = document.querySelector('.popup');
+const form = popup.querySelector('.popup__form');
+const fullscreenPhoto = document.querySelector('.fullscreen-photo');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const addPhotoButton = document.querySelector('.profile__add-button');
+const closePopupButton = document.querySelector('.popup__close-button');
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -27,21 +34,17 @@ const initialCards = [
 ]; 
 
 function showPopup(element) {
-  const popup = document.querySelector('.popup');
-  const popupContainer = templates.querySelector('.popup__container').cloneNode(true);
-
-  popupContainer.querySelector('.popup__close-button').addEventListener('click', hidePopup);
-
-  popup.lastChild.remove();
-  popupContainer.append(element);
-  popup.append(popupContainer);
+  closePopupButton.style.display = 'block';
   popup.classList.add('popup_opened');
 }
 
 function hidePopup() {
-  const popup = document.querySelector('.popup');
-
   popup.classList.remove('popup_opened');
+  setTimeout(() => {
+    form.style.display = 'none';
+    fullscreenPhoto.style.display = 'none';
+    closePopupButton.style.display = 'none';
+  }, 500);
 }
 
 function editProfile(name, status) {
@@ -79,7 +82,6 @@ function addCard(title, link, prepend = false) {
 
 function saveForm(evt) {
   evt.preventDefault();
-  const form = document.querySelector('.popup__form');
 
   switch(form.querySelector('.popup__heading').textContent) {
     case 'Редактировать профиль':
@@ -98,9 +100,6 @@ function saveForm(evt) {
 }
 
 function showEditProfileForm() {
-  const formTemplate = templates.querySelector('.popup__form');
-  const form = formTemplate.cloneNode(true);
-
   form.querySelector('.popup__heading').textContent = 'Редактировать профиль';
 
   const inputs = form.querySelectorAll('.popup__input');
@@ -111,28 +110,26 @@ function showEditProfileForm() {
 
   form.querySelector('.popup__save-button').addEventListener('click', saveForm);
 
+  form.style.display = 'flex';
   showPopup(form);
 }
 
 function showImageAddForm() {
-  const formTemplate = templates.querySelector('.popup__form');
-  const form = formTemplate.cloneNode(true);
-
   form.querySelector('.popup__heading').textContent = 'Новое место';
 
   const inputs = form.querySelectorAll('.popup__input');
   inputs[0].name = 'title';
+  inputs[0].value = '';
   inputs[1].name = 'link';
+  inputs[1].value = '';
 
   form.querySelector('.popup__save-button').addEventListener('click', saveForm);
 
+  form.style.display = 'flex';
   showPopup(form);
 }
 
 function zoomImage(evt) {
-  const fullscreenPhotoTemplate = templates.querySelector('.fullscreen-photo');
-  const fullscreenPhoto = fullscreenPhotoTemplate.cloneNode(true);
-
   const photoImage = fullscreenPhoto.querySelector('.fullscreen-photo__image');
   photoImage.src = evt.target.src;
   photoImage.alt = evt.target.alt;
@@ -140,6 +137,7 @@ function zoomImage(evt) {
   const photoTitle = fullscreenPhoto.querySelector('.fullscreen-photo__title');
   photoTitle.textContent = evt.target.parentNode.querySelector('.photo__title').textContent;
 
+  fullscreenPhoto.style.display = 'flex';
   showPopup(fullscreenPhoto);
 }
 
@@ -153,11 +151,11 @@ function deleteCard(evt) {
   card.remove();
 }
 
-const profileEditButton = document.querySelector('.profile__edit-button');
 profileEditButton.addEventListener('click', showEditProfileForm);
 
-const addPhotoButton = document.querySelector('.profile__add-button');
 addPhotoButton.addEventListener('click', showImageAddForm);
+
+closePopupButton.addEventListener('click', hidePopup);
 
 initialCards.forEach((card) => {
   addCard(card['name'], card['link']);
