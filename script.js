@@ -1,10 +1,10 @@
 const templates = document.querySelector('#templates').content;
-const popup = document.querySelector('.popup');
-const form = popup.querySelector('.popup__form');
-const fullscreenPhoto = document.querySelector('.fullscreen-photo');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const addPhotoButton = document.querySelector('.profile__add-button');
-const closePopupButton = document.querySelector('.popup__close-button');
+const saveFormButtons = document.querySelectorAll('.popup__save-button');
+const fullscreenPhoto = document.querySelector('.fullscreen-photo');
+const photoImage = fullscreenPhoto.querySelector('.fullscreen-photo__image');
+const photoTitle = fullscreenPhoto.querySelector('.fullscreen-photo__title');
 
 const initialCards = [
   {
@@ -33,18 +33,19 @@ const initialCards = [
   }
 ]; 
 
-function showPopup(element) {
-  closePopupButton.style.display = 'block';
+function showPopup(popup) {
+  const closePopupButton = popup.querySelector('.popup__close-button');
+  closePopupButton.addEventListener('click', hidePopup);
+
   popup.classList.add('popup_opened');
 }
 
-function hidePopup() {
+function hidePopup(evt) {
+  const popup = evt.target.parentNode.parentNode.parentNode;
+  const closePopupButton = popup.querySelector('.popup__close-button');
+  closePopupButton.removeEventListener('click', hidePopup);
+
   popup.classList.remove('popup_opened');
-  setTimeout(() => {
-    form.style.display = 'none';
-    fullscreenPhoto.style.display = 'none';
-    closePopupButton.style.display = 'none';
-  }, 500);
 }
 
 function editProfile(name, status) {
@@ -82,6 +83,7 @@ function addCard(title, link, prepend = false) {
 
 function saveForm(evt) {
   evt.preventDefault();
+  const form = evt.target.parentNode;
 
   switch(form.querySelector('.popup__heading').textContent) {
     case 'Редактировать профиль':
@@ -96,49 +98,37 @@ function saveForm(evt) {
     break;
   }
 
-  hidePopup();
+  hidePopup(evt);
 }
 
 function showEditProfileForm() {
-  form.querySelector('.popup__heading').textContent = 'Редактировать профиль';
+  const popup = document.querySelector('.popup_type_profile');
 
-  const inputs = form.querySelectorAll('.popup__input');
-  inputs[0].name = 'name';
+  const inputs = popup.querySelectorAll('.popup__input');
   inputs[0].value = document.querySelector('.profile__name').textContent;
-  inputs[1].name = 'status';
   inputs[1].value = document.querySelector('.profile__status').textContent;
 
-  form.querySelector('.popup__save-button').addEventListener('click', saveForm);
-
-  form.style.display = 'flex';
-  showPopup(form);
+  showPopup(popup);
 }
 
 function showImageAddForm() {
-  form.querySelector('.popup__heading').textContent = 'Новое место';
+  const popup = document.querySelector('.popup_type_card');
 
-  const inputs = form.querySelectorAll('.popup__input');
-  inputs[0].name = 'title';
+  const inputs = popup.querySelectorAll('.popup__input');
   inputs[0].value = '';
-  inputs[1].name = 'link';
   inputs[1].value = '';
 
-  form.querySelector('.popup__save-button').addEventListener('click', saveForm);
-
-  form.style.display = 'flex';
-  showPopup(form);
+  showPopup(popup);
 }
 
 function zoomImage(evt) {
-  const photoImage = fullscreenPhoto.querySelector('.fullscreen-photo__image');
+  const popup = document.querySelector('.popup_type_image');
+
   photoImage.src = evt.target.src;
   photoImage.alt = evt.target.alt;
 
-  const photoTitle = fullscreenPhoto.querySelector('.fullscreen-photo__title');
   photoTitle.textContent = evt.target.parentNode.querySelector('.photo__title').textContent;
-
-  fullscreenPhoto.style.display = 'flex';
-  showPopup(fullscreenPhoto);
+  showPopup(popup);
 }
 
 function likeCard(evt) {
@@ -155,8 +145,10 @@ profileEditButton.addEventListener('click', showEditProfileForm);
 
 addPhotoButton.addEventListener('click', showImageAddForm);
 
-closePopupButton.addEventListener('click', hidePopup);
-
 initialCards.forEach((card) => {
   addCard(card['name'], card['link']);
 })
+
+
+saveFormButtons[0].addEventListener('click', saveForm);
+saveFormButtons[1].addEventListener('click', saveForm);

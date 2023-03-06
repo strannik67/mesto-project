@@ -1,6 +1,6 @@
 .popup__form {
   width: 430px;
-  display: none;
+  display: flex;
   flex-direction: column;
   row-gap: 30px;
   box-sizing: border-box;
