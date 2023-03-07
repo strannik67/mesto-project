@@ -74,8 +74,8 @@ function saveImageAddForm(evt) {
   const title = inputFieldCardTitle.value;
   const link = inputFieldImageLink.value;
 
-  hidePopup(popupCard);
   cards.prepend(createCard(title, link));
+  hidePopup(popupCard);
 }
 
 function showEditProfileForm() {
