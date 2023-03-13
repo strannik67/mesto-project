@@ -1,3 +1,4 @@
+const page = document.querySelector('.page');
 const templates = document.querySelector('#templates').content;
 const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
 const buttonOpenPopupAddPhoto = document.querySelector('.profile__add-button');
@@ -18,8 +19,23 @@ const popupImage = document.querySelector('.popup_type_image');
 const cards = document.querySelector('.photos');
 
 
+function clickHandler(evt) {
+  if(evt.target.classList.contains('popup')) {
+    hidePopup(evt.target);
+  }
+}
+
+function keyHandler(evt) {
+  if(evt.key === 'Escape') {
+    popup = document.querySelector('.popup_opened');
+    if(popup) hidePopup(popup);
+  }
+
+}
+
 function showPopup(popup) {
   const buttonClosePopup = popup.querySelector('.popup__close-button');
+  page.addEventListener('keydown', keyHandler);
   buttonClosePopup.addEventListener('click', () => {hidePopup(popup)});
 
   popup.classList.add('popup_opened');
@@ -27,6 +43,7 @@ function showPopup(popup) {
 
 function hidePopup(popup) {
   const buttonClosePopup = popup.querySelector('.popup__close-button');
+  page.removeEventListener('keydown', keyHandler);
   buttonClosePopup.removeEventListener('click', hidePopup);
 
   popup.classList.remove('popup_opened');
@@ -115,6 +132,8 @@ buttonOpenPopupAddPhoto.addEventListener('click', showImageAddForm);
 
 formEditProfile.addEventListener('submit', saveEditProfileForm);
 formAddCard.addEventListener('submit', saveImageAddForm);
+
+page.addEventListener('click', clickHandler);
 
 initialCards.forEach((card) => {
   cards.append(createCard(card['name'], card['link']));
